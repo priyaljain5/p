@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Reservation Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Admin Reservation Management</h2>
+
+        <!-- List of Reservations (for simplicity, hardcoded) -->
+        <div class="reservation">
+            <h3>Reservation #12345</h3>
+            <p><strong>Customer Name:</strong> John Doe</p>
+            <p><strong>Check-in Date:</strong> 2024-10-01</p>
+            <p><strong>Check-out Date:</strong> 2024-10-05</p>
+            <p><strong>Room Preference:</strong> Suite</p>
+
+            <label for="approval">Reservation Approval:</label>
+            <select id="approval" required>
+                <option value="" disabled selected>Select Action</option>
+                <option value="Approved">Approve</option>
+                <option value="Rejected">Reject</option>
+            </select>
+
+            <button onclick="processReservation(12345)">Submit</button>
+        </div>
+
+        <!-- Reservation approval message -->
+        <div id="adminMessage" style="display:none;">
+            <h3>Reservation Processed</h3>
+            <p id="adminStatus"></p>
+        </div>
+    </div>
+
+    <script>
+        function processReservation(bookingId) {
+            const approvalStatus = document.getElementById('approval').value;
+
+            if (approvalStatus === "") {
+                alert("Please select an approval status.");
+                return;
+            }
+
+            // Display admin message with booking ID and approval status
+            document.querySelector('.reservation').style.display = 'none';
+            document.getElementById('adminMessage').style.display = 'block';
+            document.getElementById('adminStatus').textContent = `Reservation #${bookingId} has been ${approvalStatus}.`;
+        }
+    </script>
+</body>
+</html>

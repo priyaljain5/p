@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Success</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h3>Registration Successful!</h3>
+        <p>User ID: <span id="userIdDisplay"></span></p>
+        <p>Thank you for registering, <span id="customerNameDisplay"></span>!</p>
+
+        <!-- Buttons to redirect to the login page -->
+        <button onclick="redirectToLogin()">Login</button>
+
+    </div>
+
+    <script>
+        // Get the user information from the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const userId = urlParams.get('userId');
+        const customerName = urlParams.get('customerName');
+
+        // Display the user ID and customer name
+        document.getElementById('userIdDisplay').textContent = userId;
+        document.getElementById('customerNameDisplay').textContent = customerName;
+
+        // Redirect to login page
+        function redirectToLogin() {
+            window.location.href = `login.html?userId=${userId}`;
+        }
+
+    </script>
+</body>
+</html>

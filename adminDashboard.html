@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h3>Welcome to the Admin Dashboard</h3>
+        <p>You are logged in as <span id="adminUserId"></span>.</p>
+        <!-- Add admin-specific options here -->
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const userId = urlParams.get('userId');
+
+        // Display the Admin User ID
+        document.getElementById('adminUserId').textContent = userId;
+    </script>
+</body>
+</html>

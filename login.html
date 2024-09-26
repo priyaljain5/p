@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h3>Login Page</h3>
+        <p>Please choose your login type:</p>
+        
+        <!-- Options to login as User or Admin -->
+        <button onclick="showUserLogin()">Login as User</button>
+        <button onclick="showAdminLogin()">Login as Admin</button>
+
+        <!-- Login form (hidden initially) -->
+        <div id="loginForm" style="display:none;">
+            <h4 id="loginTitle"></h4>
+            
+            <label for="userId">User ID</label>
+            <input type="text" id="userId" minlength="5" maxlength="20" placeholder="Enter User ID" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" maxlength="30" placeholder="Enter Password" required>
+
+            <button id="loginBtn">Login</button>
+            <p id="errorMessage" style="color:red;"></p>
+        </div>
+    </div>
+
+    <script>
+        let loginType = '';  // Track whether the user chose User or Admin
+
+        // Show User login form
+        function showUserLogin() {
+            loginType = 'user';
+            document.getElementById('loginTitle').textContent = 'Login as User';
+            document.getElementById('loginForm').style.display = 'block';
+        }
+
+        // Show Admin login form
+        function showAdminLogin() {
+            loginType = 'admin';
+            document.getElementById('loginTitle').textContent = 'Login as Admin';
+            document.getElementById('loginForm').style.display = 'block';
+        }
+
+        // Login button click handler
+        document.getElementById('loginBtn').addEventListener('click', function () {
+            const userId = document.getElementById('userId').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Password validation: Must contain uppercase, lowercase, and special character
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,30}$/;
+
+            // Check for valid User ID and Password
+            if (userId.length < 5 || userId.length > 20) {
+                errorMessage.textContent = "User ID must be between 5 and 20 characters.";
+                return;
+            }
+
+            if (!passwordRegex.test(password)) {
+                errorMessage.textContent = "Password must be between 8-30 characters, contain at least one uppercase letter, one lowercase letter, and one special character.";
+                return;
+            }
+
+            // Simulate checking roles (Admin/User)
+            if (loginType === 'admin' && userId.toLowerCase() === 'admin') {
+                // Redirect to Admin Dashboard
+                window.location.href = `adminDashboard.html?userId=${userId}`;
+            } else if (loginType === 'user' && userId.toLowerCase() === 'user123') {
+                // Redirect to User Dashboard
+                window.location.href = `userDashboard.html?userId=${userId}`;
+            } else {
+                errorMessage.textContent = "Invalid User ID or Password.";
+            }
+        });
+    </script>
+</body>
+</html>

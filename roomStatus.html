@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Status</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="top-nav">
+            <ul>
+                <li><a href="adminHome.html">Home</a></li>
+                <li><a href="reservation.html">Reservation</a></li>
+                <li><a href="billing.html">Billing Page</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="roomStatus.html">Room Status</a></li>
+                <li><a href="bookings.html">Bookings</a></li>
+                <li><a href="contactSupport.html">Contact Support/Feedback</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </nav>
+        <div class="welcome-message">
+            Welcome, <span id="adminUsernameDisplay"></span>
+        </div>
+    </header>
+
+    <main>
+        <h2>Room Status</h2>
+        <p>This is where you can check the status of all rooms.</p>
+    </main>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const adminUsername = urlParams.get('username');
+        document.getElementById('adminUsernameDisplay').textContent = adminUsername || 'Admin';
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing - Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Generate Invoice for User</h2>
+
+        <!-- Admin enters user ID -->
+        <form id="generateInvoiceForm">
+            <label for="userId">Enter User ID:</label>
+            <input type="text" id="userId" placeholder="Enter User ID" required>
+            <button type="submit">Generate Invoice</button>
+        </form>
+
+        <!-- Invoice Details (hidden initially) -->
+        <div id="invoiceDetails" style="display: none;">
+            <h3>Invoice Details</h3>
+            <p><strong>Reservation ID:</strong> 12345</p>
+            <p><strong>User Name:</strong> John Doe</p>
+            <p><strong>Room Charges:</strong> $200</p>
+            <p><strong>Additional Services:</strong> $50</p>
+            <p><strong>Total Amount:</strong> $250</p>
+
+            <!-- Finalize and generate invoice -->
+            <button onclick="finalizeInvoice()">Finalize Invoice</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('generateInvoiceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const userId = document.getElementById('userId').value;
+            
+            // Simulate fetching user invoice details
+            if (userId === 'user123') {
+                document.getElementById('generateInvoiceForm').style.display = 'none';
+                document.getElementById('invoiceDetails').style.display = 'block';
+            } else {
+                alert("User ID not found!");
+            }
+        });
+
+        function finalizeInvoice() {
+            alert("Invoice Generated Successfully!");
+            // Redirect to admin dashboard or any success page
+            window.location.href = 'adminDashboard.html';
+        }
+    </script>
+</body>
+</html>

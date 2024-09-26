@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing - Customer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Checkout and Billing Summary</h2>
+        
+        <!-- Display billing information -->
+        <div class="billing-details">
+            <h3>Your Bill</h3>
+            <p><strong>Reservation ID:</strong> 12345</p>
+            <p><strong>Room Charges:</strong> $200</p>
+            <p><strong>Additional Services:</strong> $50</p>
+            <p><strong>Total Amount Due:</strong> $250</p>
+        </div>
+
+        <!-- Pay Bill button -->
+        <button onclick="redirectToPayment()">Pay Bill</button>
+    </div>
+
+    <script>
+        function redirectToPayment() {
+            // Redirect to payment page
+            window.location.href = 'payment.html';
+        }
+    </script>
+</body>
+</html>
